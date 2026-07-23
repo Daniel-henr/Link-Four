@@ -1,0 +1,439 @@
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Arial Black', Impact, sans-serif;
+  margin: 0;
+  background:
+    radial-gradient(circle at top, #0f4dff 0%, #0727b8 35%, #03147a 70%, #020c4f 100%);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 183, 255, 0.25), transparent 60%);
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*  PAGE WRAPPER  */
+.home {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 1.5rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/*  NAV  */
+#NAV__prime0 {
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem 1.5rem;
+  position: relative;
+  z-index: 20;
+}
+
+/* FIX: impede o div pai de esticar o botão */
+#DV_home_prime0 {
+  display: inline-flex;
+}
+
+.btn-voltar {
+ display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 9px 21px;
+		background-color: #0439ff;
+		border: 1px solid #2cb9ff;
+		border-radius: 10px;
+		color: #fff;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: 3%;
+		font-size: 17px;
+        cursor: pointer;
+}
+
+.btn-voltar img {
+  width: 20px;
+  height: auto;
+}
+
+.btn-voltar:hover {
+  background: linear-gradient(180deg, #3d8bff, #1a55ff);
+  transform: translateX(-2px);
+}
+
+
+
+/*  TÍTULO  */
+.titulo {
+  text-align: center;
+  margin-top: -3rem;
+}
+
+.titulo h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  margin: 0;
+  color: white;
+  text-shadow:
+    0 4px 0 rgba(0, 0, 0, 0.25),
+    0 0.5em 1.2em rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 1;
+}
+
+.titulo h2 {
+  margin: -0.4em 0 0 0;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, #43c8ff, #0095ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.25))
+          drop-shadow(0 0.5em 1.2em rgba(0, 0, 0, 0.35));
+  position: relative;
+  z-index: 2;
+}
+
+/* SECTION PRINCIPAL  */
+#SEC_prime0 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 3rem;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+/*  COLUNA CENTRAL  */
+.center-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 60vw;
+  /* FIX: substituído margin-left: 15vw por padding para não roubar espaço do card */
+  margin-left: 15vw;
+  box-sizing: border-box;
+}
+
+/*  BOTÕES REGRAS / CRÉDITOS  */
+#DV_regras_e_creditos {
+  position: absolute;
+  left: 5vw;
+  top: 45%;
+  transform: translateY(-40%);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  z-index: 10; 
+
+}
+
+.A_regras_e_creditos {
+  width: 12rem;
+  font-size: 1.063vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5vh 2vw;
+  background-color: #0439ff;
+  border: 1px solid #2cb9ff;
+  border-radius: 0.625vw;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: 0.15s ease;
+  /* min-height: 2.8rem;  ← REMOVER esta linha */
+}
+
+.A_regras_e_creditos i {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.A_regras_e_creditos:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.A_regras_e_creditos:active {
+  transform: translateY(1px);
+  filter: brightness(0.95);
+}
+
+/*  CARD PRINCIPAL */
+img {
+  max-width: 73%;
+  max-height: 73%;
+}
+
+.DV_main_card {
+  /* FIX: width 100% relativo ao center-col, sem margin-left que roubava espaço */
+  width: 100%;
+  box-sizing: border-box;
+  /* FIX: min-width para não encolher em telas menores */
+  min-width: 0;
+  min-height: 3px;
+  height: auto;
+  background: rgba(0, 0, 60, 0.35);
+  border: 0.125rem solid rgba(0, 183, 255, 0.25);
+  border-radius: 1rem;
+  padding: 2rem 2.5rem;
+  backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  /* FIX: removido margin-left: 5vw que causava o encolhimento */
+}
+
+.DV_card_content {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: -20px;
+}
+
+/* ÁREA DE TEXTO  */
+.card-text {
+  flex: 1;
+  min-width: 0;
+  max-width: 480px;
+}
+
+.card-text h2 {
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  white-space: nowrap;
+}
+
+.card-text h2 span {
+  color: #1ecfff;
+  display: block;
+}
+
+.card-text p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+  margin: 16px 0 20px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 32px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+}
+
+.features span::before {
+  content: "✓ ";
+  color: #1ecfff;
+  font-weight: 700;
+}
+
+/*  PILLARS  */
+.pillars {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 28px;
+  margin-top: -20px;
+  /* FIX: removido margin-left: 9.9vw que desalinhava os pillars do card */
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  gap: 8px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.pillar:last-child {
+  border-right: none;
+}
+
+.pillar-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #2563c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.pillar-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+}
+
+.pillar h3 {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #1ecfff;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.pillar p {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVO — tablet (≤ 960px)
+════════════════════════════════════════ */
+@media (max-width: 90rem) {
+  .titulo {
+    margin-top: -2.5rem;
+  }
+
+  #SEC_prime0 {
+    flex: unset;
+    padding-top: 0;
+  }
+
+  .center-col {
+    margin-left: 16rem;
+    width: 60%;
+  }
+}
+
+@media (max-width: 60rem) {
+  #DV_regras_e_creditos {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .A_regras_e_creditos {
+    flex: 1;
+    max-width: 14rem;
+  }
+
+  #SEC_prime0 {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    flex: unset;
+  }
+
+  .center-col {
+    width: 100%;
+    max-width: 38rem;
+    margin-left: 0;
+  }
+
+  .DV_card_content {
+    flex-wrap: wrap;
+  }
+
+  .card-text h2 {
+    white-space: normal;
+  }
+
+  .features {
+    white-space: normal;
+  }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVO — mobile (≤ 480px)
+════════════════════════════════════════ */
+@media (max-width: 30rem) {
+  #DV_regras_e_creditos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .A_regras_e_creditos {
+    width: 100%;
+    max-width: 16rem;
+  }
+
+  .center-col {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 1rem;
+  }
+
+  .pillars {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pillar {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 1rem;
+  }
+
+  .pillar:last-child {
+    border-bottom: none;
+  }
+}

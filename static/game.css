@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+
+/* Reset geral: zera espaçamentos padrão do navegador e define a fonte usada em toda a tela */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+/* Fundo de toda a tela do jogo (gradiente azul) */
+.home {
+	position: relative;
+	min-height: 100vh;
+	padding-inline: 5px;
+	width: 100%;
+	background: radial-gradient(circle at top, #0f4dff 0%, #0727b8 35%, #03147a 70%, #020c4f 100%);
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+
+/* Camada com a grade quadriculada de fundo */
+.home::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+	background-size: 50px 50px;
+	pointer-events: none;
+}
+
+/* Camada com o brilho azul no centro da tela */
+.home::after {
+	content: '';
+	position: relative;
+	inset: 0;
+	background: radial-gradient(circle at center, rgba(0, 183, 255, 0.15), transparent 70%);
+	pointer-events: none;
+}
+
+/* Envolve todo o conteúdo da tela do jogo */
+.container {
+	position: relative;
+	width: 100vw;
+}
+
+/* Barra de cima com a logo e o botão de instruções */
+.top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 26px 48px 0px 48px;
+}
+
+/* Tamanho da imagem da logo */
+.logo {
+	width: 222px;
+	height: 115px;
+	cursor: pointer;
+}
+
+/* Botão de instruções, no canto superior direito */
+/* z-index maior que o overlay do sorteio (90), pra ficar acessível mesmo com o sorteio aberto na tela.
+   A logo (que volta pra tela inicial) não recebe esse destaque de propósito, e continua bloqueada nesse momento. */
+.btn-home {
+	position: relative;
+	z-index: 95;
+	display: flex;
+	align-items: center;
+	gap: 0.5vw;
+	padding: 1.5vh 2vw;
+	background-color: #0439ff;
+	border: 1px solid #2cb9ff;
+	border-radius: 0.625vw;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 3%;
+	font-size: 1.063vw;
+	cursor: pointer;
+}
+
+/* Envolve a barra de vez, o tabuleiro e os botões de baixo */
+.game-content {
+	display: grid;
+	justify-content: center;
+}
+
+/* Centraliza a barrinha de vez do jogador */
+.game-turn {
+	display: flex;
+	justify-content: center;
+}
+
+.game-turn-bar {
+	width: 306px;
+	height: 55px;
+	padding-inline: 14px;
+	position: relative;
+	color: #fff;
+	font-size: 1.1rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 8%;
+	background: linear-gradient(90deg, rgba(0, 50, 193, 1) 0%, rgba(1, 68, 216, 1) 100%);
+	border-radius: 100vh;
+	border: 1px solid #16bdfc;
+	margin-bottom: 2rem;
+	/* Esconde o nome antigo assim que ele voa pra fora, pela direita */
+	overflow: hidden;
+}
+
+/* Envolve o avatar + mensagem de vez. Fica com posição absoluta pra */
+/* o texto que sai e o que entra ficarem exatamente no mesmo lugar */
+/* durante a troca, ao invés de ficarem um do lado do outro */
+.turn-content {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+}
+
+/* Linha com o card do jogador 1, o tabuleiro e o card do jogador 2 */
+.game-functions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4rem;
+}
+
+/* Card de cada jogador (avatar, nome e placar) */
+.player-card-1,
+.player-card-2 {
+	width: 284px;
+	height: 372px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	background: linear-gradient(192deg, rgba(1, 71, 221, 1) 2%, rgba(0, 33, 170, 1) 100%);
+	border: 1px inset #16BDFC;
+	border-radius: 25px;
+}
+
+/* Círculo de fundo onde fica a bolinha do avatar */
+.player-avatar {
+	width: 121px;
+	height: 121px;
+	border-radius: 100vh;
+	background-color: #333FCF;
+	margin-top: 24px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+
+/* Nome do jogador embaixo do avatar */
+.player-name {
+	color: #fff;
+	font-size: 1.25rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 8%;
+	margin-top: 25px;
+}
+
+/* Caixa do placar dentro do card do jogador */
+.player-score {
+	width: 254px;
+	height: 112px;
+	margin-top: 22px;
+	background-color: #0021A6;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.35);
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Texto "Score" em cima do número */
+.player-score-label {
+	color: #fff;
+	font-size: 13px;
+	font-weight: 100;
+	text-transform: uppercase;
+	letter-spacing: 8%;
+	margin-top: 11px;
+}
+
+/* Número do placar (tamanho e estilo) */
+.player2-score-value,
+.player1-score-value {
+	font-size: 53px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 8%;
+}
+
+/* Cor do placar do jogador 1 (vermelho) */
+.player1-score-value {
+	color: #DB181F;
+}
+
+/* Cor do placar do jogador 2 (amarelo) */
+.player2-score-value {
+	color: #FCBA01;
+}
+
+/* Linha de baixo com os botões de desistir e reiniciar */
+.game-options {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 64px;
+	margin-inline: 73px;
+
+	button {
+		color: #fff;
+		align-items: center;
+		gap: 8px;
+	}
+}
+
+/* Botão de reiniciar a partida */
+.btn-restart {
+	display: flex;
+	padding: 9px 54px;
+	background: linear-gradient(180deg, rgba(0, 168, 252, 1) 0%, rgba(0, 106, 171, 1) 100%);
+	border: 1px solid #2cb9ff;
+	border-radius: 100vw;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 3%;
+	font-size: 21px;
+	text-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 11px 6px 0px rgba(0, 0, 0, 0.25), 0px 6px 0px 0px rgba(0, 0, 0, 0.19);
+	cursor: pointer;
+	transition: transform 0.15s ease;
+}
+
+/* Cresce um pouco ao passar o mouse, mostrando que dá pra clicar */
+.btn-restart:hover {
+	transform: scale(1.06);
+}
+
+/* Botão de desistir (forfeit) de cada jogador */
+.btn {
+	display: flex;
+	padding: 9px 21px;
+	background-color: #0439FF;
+	border: 1px solid #2cb9ff;
+	border-radius: 10px;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 3%;
+	font-size: 14px;
+	cursor: pointer;
+	/* Acender (quando fica a vez do jogador) é suave; apagar usa a transição mais rápida definida no :disabled abaixo */
+	transition:
+		opacity 0.45s ease-out,
+		filter 0.45s ease-out,
+		transform 0.15s ease;
+}
+
+/* Cresce um pouco ao passar o mouse, só quando o botão está habilitado */
+.btn:hover:not(:disabled) {
+	transform: scale(1.08);
+}
+
+.btn:disabled {
+	cursor: not-allowed;
+	/* Botão "apagado": mais escuro e sem cor enquanto não é a vez desse jogador */
+	opacity: 0.4;
+	filter: grayscale(0.5) brightness(0.75);
+	/* Transição rápida de apagar, mais curta que a de acender lá em cima */
+	transition:
+		opacity 0.18s ease-in,
+		filter 0.18s ease-in;
+}
+
+/* Fundo escurecido atrás dos modais (instruções e resultado) */
+.modal-overlay {
+	position: fixed;
+	z-index: 100;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 20, 0.5);
+	backdrop-filter: blur(8px);
+	display: flex;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+/* Caixa branca/azul do modal, com a animação de abrir */
+.modal {
+	cursor: default;
+	background: #0030b0;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 1vw;
+	padding: 32px;
+	width: 39.688vw;
+	height: 48.483vh;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	transform: perspective(1000px) rotateX(4deg);
+	box-shadow:
+		0 24px 60px rgba(0, 0, 60, 0.6),
+		0 8px 20px rgba(0, 0, 0, 0.4);
+	animation: abrirModal 0.25s ease-out;
+
+	h2 {
+		font-size: 2vw;
+		margin-bottom: 2.3vh;
+		letter-spacing: 0.15vw;
+	}
+
+	li {
+		padding-bottom: 2.299vh;
+		font-size: 1.1vw;
+	}
+}
+
+/* O carrossel de instruções já tem seu próprio "cartão" (fundo, borda, sombra).
+   Aqui a gente remove a "casca" do .modal só nesse caso, pra não ficar cartão dentro de cartão. */
+.modal.modal-tutorial {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	transform: none;
+	width: auto;
+	height: auto;
+}
+
+/* Anima o elemento entrando na tela (crescendo de 0 até o tamanho normal) */
+.animate {
+	animation: popIn 0.5s ease-out;
+}
+
+/* Animação de fechar só do modal (diferente do popOut genérico) */
+.modal.closing {
+	animation: fecharModal 0.35s ease-out forwards;
+}
+
+/* Passo a passo de abrir o modal: começa pequeno (0%) e termina no tamanho normal (100%) */
+@keyframes abrirModal {
+    0%   { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* Passo a passo de fechar o modal: dá uma estufada e depois encolhe até sumir */
+@keyframes fecharModal {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.5); }
+    100% { transform: scale(0); }
+}
+
+/* Anima o elemento saindo da tela (encolhendo até sumir) */
+.closing {
+    animation: popOut 0.5s ease-out forwards;
+}
+
+/* Modal de resultado (vitória, empate ou desistência): usa a mesma animação do modal de instruções, só muda o layout */
+.result-modal {
+	width: 26vw;
+	height: auto;
+	min-height: 22vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 1rem;
+}
+
+/* Centraliza o avatar do vencedor dentro do modal de resultado */
+.result-avatar {
+	display: flex;
+}
+
+/* Título do modal de resultado (ex: "Player 1 Won!") */
+.result-modal h2 {
+	margin-bottom: 0;
+	font-size: 1.8vw;
+}
+
+/* Texto menor embaixo do título do modal de resultado */
+.result-modal-subtitle {
+	font-size: 1vw;
+	opacity: 0.85;
+}

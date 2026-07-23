@@ -1,0 +1,68 @@
+@keyframes slide-in-from-right {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-out-to-left {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-60px); }
+}
+
+@keyframes slide-in-from-left {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-out-to-right {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(60px); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.97); }
+}
+
+/* --- Duração padrão --- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Home → Game: desliza para a esquerda --- */
+html.transition-slide-left::view-transition-old(root) {
+  animation-name: slide-out-to-left;
+}
+html.transition-slide-left::view-transition-new(root) {
+  animation-name: slide-in-from-right;
+}
+
+/* --- Game → Home / Home → Rules: desliza para a direita --- */
+html.transition-slide-right::view-transition-old(root) {
+  animation-name: slide-out-to-right;
+}
+html.transition-slide-right::view-transition-new(root) {
+  animation-name: slide-in-from-left;
+}
+
+/* --- Fade genérico --- */
+html.transition-fade::view-transition-old(root) {
+  animation-name: fade-out;
+}
+html.transition-fade::view-transition-new(root) {
+  animation-name: fade-in;
+}
+
+:root {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+}

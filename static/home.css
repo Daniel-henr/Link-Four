@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
+
+
+/* ─────────────────── Reset & Base ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fundo da tela inicial (mesmo gradiente azul das outras telas) */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Arial Black', Impact, sans-serif;
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, #0f4dff 0%, #0727b8 35%, #03147a 70%, #020c4f 100%);
+  position: relative;
+}
+
+/* Grade quadriculada de fundo */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+/* Brilho azul no centro da tela */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center,
+      rgba(0, 183, 255, 0.25),
+      transparent 60%);
+  pointer-events: none;
+}
+
+/*─────────────────── Contêiner do Logo ─────────────────── */
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 680px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -10vh;
+}
+
+/* Área invisível atrás da logo, só ocupa espaço */
+.logo-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 400px;
+  z-index: -1;
+}
+
+/* ─────────────────── Linha do Título ─────────────────────────────────────── */
+.logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: -4rem;
+  padding: 18px 24px 8px;
+  flex-direction: column;
+  margin-left: -12px;
+}
+
+/* ─────────────────── Grupo de cada Palavra ──────────────────────────────── */
+.word {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.word2 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 2rem;
+}
+
+/* ──────────────────── Letras ─────────────────────────────────────────────── */
+.letter1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 72px;
+  font-style: italic;
+  color: #ffffff;
+  text-shadow: 2px 5px 7px #0a3060;
+  line-height: 1;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.letter {
+  font-family: 'Poppins', sans-serif;
+  font-size: 72px;
+  font-weight: 800;
+  font-style: italic;
+  color: #1a9ae0;
+  text-shadow: 2px 5px 7px #0a3060;
+  line-height: 1;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+/* ─────────────────── Base da Bola ───────────────────────────────────────── */
+/* Bolinha padrão (tamanho base, sem cor definida) */
+.ball {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Bolinha vermelha ao lado da palavra LINK */
+.ball-red {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #e03030;
+  flex-shrink: 0;
+  box-shadow: 2px 5px 7px #0a3060;
+}
+
+/* Bolinha amarela ao lado da palavra FOUR */
+.ball-yellow {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #e8a820;
+  flex-shrink: 0;
+  box-shadow: 2px 5px 7px #0a3060;
+}
+
+/* ─────────────────── Barra de Peças Inferior ────────────────────────────── */
+.piece-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #2563c7;
+  border: 0.9px solid #1a1a2e;
+  box-shadow: 2px 5px 7px #0a3060;
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-top: 2px;
+  margin-bottom: 40px;
+}
+
+.piece {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 0.9px solid #1a1a2e;
+  box-shadow: 2px 3px 7px #0a3060;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Cor de cada peça da barrinha decorativa embaixo da logo */
+.piece-red    { background: #e03030; }
+.piece-yellow { background: #e8a820; }
+
+/* ─────────────────── mensagem ─────────────────── */
+.msg-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15vh;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.msg-wrapper span {
+  font-size: 30px;
+}
+
+.msg-line {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 2px 5px 7px #0a3060;
+  letter-spacing: 1px;
+  line-height: 1;
+  user-select: none;
+}
+
+.line {
+  height: 1px;
+  background-color: #40e0ff;
+  width: 60px;
+  box-shadow:
+    0 0 4px 1px #40e0ff,
+    0 0 8px 2px #00aaff;
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ESTILO BASE COMPARTILHADO — todos os botões herdam isto
+   (background, border, border-radius, font, color,
+    cursor, box-shadow, transition, hover)
+   Cada botão mantém seu próprio width / height / font-size
+══════════════════════════════════════════════════════════ */
+
+/*─────────────────── botão de play ───────────────────*/
+.play-btn {
+  /* proporções originais */
+  width: 230px;
+  height: 70px;
+  font-size: 26px;
+  margin-bottom: 15px;
+
+  /* estilo exato fornecido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5vh 2vw;
+  background-color: #0439ff;
+  border: 1px solid #2cb9ff;
+  border-radius: 0.625vw;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+/* Efeito ao passar o mouse: fica mais claro e sobe um pouco */
+.play-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+/* Efeito ao clicar: desce um pouco e escurece */
+.play-btn:active {
+  transform: translateY(1px);
+  filter: brightness(0.95);
+}
+
+/*─────────────────── Botão de ABOUT ───────────────────*/
+.about-btn {
+  /* proporções originais */
+  width: 230px;
+  height: 70px;
+  font-size: 20px;
+
+  /* estilo exato fornecido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5vh 2vw;
+  background-color: #0439ff;
+  border: 1px solid #2cb9ff;
+  border-radius: 0.625vw;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+/* Efeito ao passar o mouse: fica mais claro e sobe um pouco */
+.about-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+/* Efeito ao clicar: desce um pouco e escurece */
+.about-btn:active {
+  transform: translateY(1px);
+  filter: brightness(0.95);
+}

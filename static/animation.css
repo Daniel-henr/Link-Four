@@ -1,0 +1,22 @@
+/* Anima o elemento crescendo de 0 até o tamanho normal (entrada de tela) */
+.animate {
+    animation: popIn 0.5s ease-out;
+}
+
+/* Anima o elemento encolhendo até sumir (saída de tela) */
+.closing {
+    animation: popOut 0.5s ease-out forwards;
+}
+
+/* Passo a passo do crescimento: começa invisível (escala 0) e termina no tamanho normal (escala 1) */
+@keyframes popIn {
+    0%   { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* Passo a passo do encolhimento: dá uma leve "estufada" e depois encolhe até sumir */
+@keyframes popOut {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(1.1); }
+    100% { transform: scale(0); }
+}
