@@ -2,7 +2,7 @@
 
 Link Four é a nossa versão do clássico **Connect Four** (conhecido no Brasil como **4 em Linha**). O objetivo é simples: dois jogadores se revezam soltando peças em um tabuleiro de 7 colunas por 6 linhas, tentando ser o primeiro a formar uma sequência de 4 peças da mesma cor — na horizontal, na vertical ou na diagonal — antes do adversário.
 
-O projeto foi desenvolvido como trabalho da disciplina de Administração no IFPE, e a proposta era pegar um jogo de tabuleiro tradicional e transformá-lo em uma experiência web funcional, bonita e fácil de jogar.
+O projeto foi desenvolvido como trabalho da disciplina de L[ogica de Programação no IFPE, e a proposta era pegar um jogo de tabuleiro tradicional e transformá-lo em uma experiência web funcional, bonita e fácil de jogar.
 
 ## Tecnologias
 
