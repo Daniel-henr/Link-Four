@@ -2,7 +2,7 @@ name: Deploy Svelte App to GitHub Pages
 
 on:
   push:
-    branches: 'main' # Ou 'master', dependendo do nome da sua branch principal
+    branches: 'master' # Ou 'master', dependendo do nome da sua branch principal
 
 # Concede permissões para o token do GitHub fazer o deploy
 permissions:
